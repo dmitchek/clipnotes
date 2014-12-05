@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+    <TextView
+            android:id="@id/result_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+    <Button
+            android:id="@id/do_ocr_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do Ocr"/>
+
+    <ImageView
+            android:id="@id/text_sample"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/text_sample"/>
+
+    <ImageView
+            android:id="@id/text_sample_highlighted"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/text_sample_highlighted"/>
+</LinearLayout>
+
