@@ -205,7 +205,7 @@ public class Main extends Activity {
                     // We hit our first word that didn't match
                     // Add the words from the first string until we hit a word
                     // we recognize from the second string
-                    //strTk2 = strToken2.nextToken();
+                    strTk2 = strToken2.nextToken();
                     while(strToken1.hasMoreTokens() && !compareWords(strTk1, strTk2))
                     {
                         diff += strTk1;
@@ -221,28 +221,11 @@ public class Main extends Activity {
 
         private boolean compareWords(String w1, String w2)
         {
-            int tolerance = (int)(w1.length() * 0.7f);
-            int errors = 0;
+            double tolerance = .7;
+            int maxErrors = (int)Math.ceil((w1.length() * tolerance));
+            int errors = Utils.levenshteinDistance(w1, w2);
 
-            char [] w1Chars = w1.toCharArray();
-            char [] w2Chars = w2.toCharArray();
-
-            for (int i = 0; i < w1.length(); i++) {
-
-                if(i >= w2.length())
-                    errors++;
-                else {
-                    if (w1Chars[i] != w2Chars[i]) {
-                        errors++;
-                    }
-                }
-
-                if (errors >= tolerance)
-                    return false;
-            }
-
-
-            return true;
+            return (errors <= maxErrors);
         }
     }
 
