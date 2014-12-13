@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="grey_button">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">48sp</item>
+        <item name="android:textColor">#666</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:background">#ccc</item>
+        <item name="android:layout_margin">5sp</item>
+    </style>
+</resources>

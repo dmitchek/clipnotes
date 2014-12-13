@@ -4,4 +4,8 @@
     <item type="id" name="do_ocr_btn" />
     <item type="id" name="text_sample" />
     <item type="id" name="text_sample_highlighted" />
+    <item type="id" name="capture_new" />
+    <item type="id" name="mask" />
+    <item type="id" name="capture" />
+    <item type="id" name="flash_cards" />
 </resources>
