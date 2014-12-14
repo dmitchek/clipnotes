@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">highlighter</string>
+    <string name="result_demo_text">Donec facilisis pellentesque pharetra. Ut cursus est sagittis justo porta consequat. Maecenas varius arcu tortor, sit amet ullamcorper nibh suscipit id. Etiam et orci consectetur ipsum imperdiet accumsan vitae sit amet dui. Vestibulum scelerisque enim sed quam imperdiet, in vehicula purus tincidunt. In tincidunt viverra tortor, sed vestibulum metus porttitor non.</string>
+    <string name="progress_title">Please wait</string>
+    <string name="capture_text">Capturing text...</string>
 </resources>

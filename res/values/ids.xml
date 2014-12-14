@@ -8,4 +8,7 @@
     <item type="id" name="mask" />
     <item type="id" name="capture" />
     <item type="id" name="flash_cards" />
+    <item type="id" name="camera_preview" />
+    <item type="id" name="retake" />
+    <item type="id" name="save" />
 </resources>

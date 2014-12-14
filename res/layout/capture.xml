@@ -4,16 +4,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-<ImageView android:layout_width="fill_parent"
-           android:layout_height="fill_parent"
-           android:src="@drawable/sample"/>
+    <FrameLayout
+            android:id="@id/camera_preview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            />
+
+    <ImageView android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:src="@drawable/sample_text_image"/>
 
     <com.example.highlighter.Mask android:id="@id/mask"
            android:layout_width="256sp"
            android:layout_height="72sp"
-           android:background="@android:color/transparent"
-           android:layout_centerHorizontal="true"
-           android:layout_centerVertical="true">
+           android:background="@android:color/transparent">
     </com.example.highlighter.Mask>
 
     <Button android:id="@id/capture"
