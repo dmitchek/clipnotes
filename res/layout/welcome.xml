@@ -9,12 +9,15 @@
 
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:layout_margin="20sp"
-              android:text="WELCOME"
+              android:layout_margin="48sp"
+              android:text="welcome"
+              android:textAllCaps="true"
+              android:color="@color/dark_grey"
               android:gravity="center"
               android:textSize="46sp"
               android:typeface="sans"
-              android:textColor="#666"/>
+              android:textColor="#666"
+              />
 
 
 
