@@ -29,6 +29,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.example.highlighter.activity.FlashCards"
+                  android:label="flash cards">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

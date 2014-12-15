@@ -46,8 +46,8 @@ public class Mask extends RelativeLayout {
         int layout_height = getLayoutParams().height;
 
         Paint rectPaint = new Paint();
-        rectPaint.setColor(Color.rgb(0,0,100));
-        rectPaint.setAlpha(100);
+        rectPaint.setColor(Color.rgb(50,50,50));
+        rectPaint.setAlpha(50);
 
         Rect r = new Rect();
         r.top = mRadius;
@@ -58,7 +58,7 @@ public class Mask extends RelativeLayout {
 
         Paint circlePaint = new Paint();
         circlePaint.setAntiAlias(true);
-        circlePaint.setColor(Color.rgb(200,200,200));
+        circlePaint.setColor(Color.rgb(50,50,50));
 
         // Save circle coords
         mCircles[0].x = mRadius;
@@ -74,9 +74,9 @@ public class Mask extends RelativeLayout {
         for(Point p : mCircles) {
 
             if(index == mCircleIndex)
-                circlePaint.setColor(Color.rgb(50,50,50));
+                circlePaint.setColor(Color.rgb(100,100,100));
             else
-                circlePaint.setColor(Color.rgb(200, 200, 200));
+                circlePaint.setColor(Color.rgb(50, 50, 50));
 
             canvas.drawCircle(p.x, p.y, mRadius, circlePaint);
             index++;

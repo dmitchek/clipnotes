@@ -20,7 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.highlighter.R;
 import com.example.highlighter.Utils;
-import com.googlecode.tesseract.android.TessBaseAPI;
+//import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +48,14 @@ public class Main extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Capture.class));
+            }
+        });
+
+        Button flashCards = (Button)findViewById(R.id.flash_cards);
+        flashCards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FlashCards.class));
             }
         });
 

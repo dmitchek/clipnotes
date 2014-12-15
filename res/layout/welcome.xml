@@ -19,8 +19,6 @@
               android:textColor="#666"
               />
 
-
-
     <Button android:id="@id/capture_new"
             style="@style/grey_button"
             android:text="capture new"
@@ -29,7 +27,7 @@
 
     <Button android:id="@id/flash_cards"
             style="@style/grey_button"
-            android:text="flash cards"
+            android:text="my flash cards"
             android:layout_alignParentBottom="true"
              />
 </RelativeLayout>

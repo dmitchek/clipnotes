@@ -11,4 +11,11 @@
     <item type="id" name="camera_preview" />
     <item type="id" name="retake" />
     <item type="id" name="save" />
+    <item type="id" name="card_text" />
+    <item type="id" name="card_title" />
+    <item type="id" name="card_num" />
+    <item type="id" name="next_card" />
+    <item type="id" name="prev_card" />
+    <item type="id" name="card_nav_buttons" />
+    <item type="id" name="card" />
 </resources>

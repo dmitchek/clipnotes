@@ -70,6 +70,7 @@ public class Capture extends Activity {
         final ProgressDialog progressDialog = ProgressDialog.show(Capture.this,
                 "Please wait", "Capturing text...", true);
 
+        progressDialog.setProgressStyle(ProgressDialog.THEME_HOLO_LIGHT);
         progressDialog.setCancelable(true);
 
         new Thread(new Runnable() {

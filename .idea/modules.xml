@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/highlighter.iml" filepath="$PROJECT_DIR$/highlighter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../tess-two/tess-two/tess-two.iml" filepath="$PROJECT_DIR$/../tess-two/tess-two/tess-two.iml" />
     </modules>
   </component>
 </project>
