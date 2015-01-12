@@ -9,11 +9,11 @@
                android:scaleType="centerCrop"
                android:src="@drawable/sample_text_image"/>
 
-    <com.example.highlighter.Mask android:id="@id/mask"
+    <com.clipnotes.Mask android:id="@id/mask"
            android:layout_width="256sp"
            android:layout_height="72sp"
            android:background="@android:color/transparent">
-    </com.example.highlighter.Mask>
+    </com.clipnotes.Mask>
 
     <Button android:id="@id/capture"
             style="@style/grey_button"

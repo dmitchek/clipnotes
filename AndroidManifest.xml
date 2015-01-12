@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.highlighter"
+          package="com.clipnotes"
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="19"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:largeHeap="true">
-        <activity android:name="com.example.highlighter.activity.Main"
+        <activity android:name="com.clipnotes.activity.Main"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -13,7 +13,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.highlighter.activity.Capture"
+        <activity android:name="com.clipnotes.activity.Capture"
                   android:label="capture">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.highlighter.activity.Results"
+        <activity android:name="com.clipnotes.activity.Results"
                   android:label="results">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.highlighter.activity.FlashCards"
+        <activity android:name="com.clipnotes.activity.FlashCards"
                   android:label="flash cards">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

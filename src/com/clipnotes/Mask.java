@@ -1,4 +1,4 @@
-package com.example.highlighter;
+package com.clipnotes;
 
 import android.graphics.*;
 import android.util.AttributeSet;

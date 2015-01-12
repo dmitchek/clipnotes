@@ -1,4 +1,4 @@
-package com.example.highlighter.activity;
+package com.clipnotes.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -10,9 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import com.example.highlighter.CameraPreview;
-import com.example.highlighter.R;
-import com.example.highlighter.Mask;
+import com.clipnotes.CameraPreview;
+import com.clipnotes.R;
+import com.clipnotes.Mask;
 
 
 /**

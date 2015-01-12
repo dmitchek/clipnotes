@@ -1,4 +1,4 @@
-package com.example.highlighter.activity;
+package com.clipnotes.activity;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.example.highlighter.R;
+import com.clipnotes.R;
 
 /**
  * Created by dave on 12/13/14.

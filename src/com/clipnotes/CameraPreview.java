@@ -1,4 +1,4 @@
-package com.example.highlighter;
+package com.clipnotes;
 
 /**
  * Created by dave on 12/13/14.

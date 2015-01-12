@@ -1,4 +1,4 @@
-package com.example.highlighter.activity;
+package com.clipnotes.activity;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -18,8 +18,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.example.highlighter.R;
-import com.example.highlighter.Utils;
+import com.clipnotes.R;
+import com.clipnotes.Utils;
 //import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
