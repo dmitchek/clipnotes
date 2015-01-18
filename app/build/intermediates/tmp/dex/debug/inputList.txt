@@ -1,0 +1,2 @@
+/home/dave/dev/clipnotes/app/build/intermediates/classes/debug
+/home/dave/dev/clipnotes/app/build/intermediates/pre-dexed/debug/classes-2992279f954b56313a85952ce7b138fafd03c884.jar

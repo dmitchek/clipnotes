@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="result_text" />
+    <item type="id" name="do_ocr_btn" />
+    <item type="id" name="text_sample" />
+    <item type="id" name="text_sample_highlighted" />
+    <item type="id" name="capture_new" />
+    <item type="id" name="mask" />
+    <item type="id" name="capture" />
+    <item type="id" name="flash_cards" />
+    <item type="id" name="camera_preview" />
+    <item type="id" name="retake" />
+    <item type="id" name="save" />
+    <item type="id" name="card_text" />
+    <item type="id" name="card_title" />
+    <item type="id" name="card_num" />
+    <item type="id" name="next_card" />
+    <item type="id" name="prev_card" />
+    <item type="id" name="card_nav_buttons" />
+    <item type="id" name="card" />
+</resources>

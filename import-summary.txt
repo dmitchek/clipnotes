@@ -1,0 +1,139 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* .idea/
+* .idea/.name
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/encodings.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/scopes/
+* .idea/scopes/scope_settings.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* ant.properties
+* app/
+* app/build.gradle
+* app/src/
+* app/src/main/
+* app/src/main/AndroidManifest.xml
+* app/src/main/java/
+* app/src/main/java/com/
+* app/src/main/java/com/clipnotes/
+* app/src/main/java/com/clipnotes/CameraPreview.java
+* app/src/main/java/com/clipnotes/Card.java
+* app/src/main/java/com/clipnotes/Mask.java
+* app/src/main/java/com/clipnotes/Utils.java
+* app/src/main/java/com/clipnotes/activity/
+* app/src/main/java/com/clipnotes/activity/Capture.java
+* app/src/main/java/com/clipnotes/activity/FlashCards.java
+* app/src/main/java/com/clipnotes/activity/Main.java
+* app/src/main/java/com/clipnotes/activity/Results.java
+* app/src/main/res/
+* app/src/main/res/color/
+* app/src/main/res/color/grey_button_text.xml
+* app/src/main/res/drawable-hdpi/
+* app/src/main/res/drawable-hdpi/ic_launcher.png
+* app/src/main/res/drawable-ldpi/
+* app/src/main/res/drawable-ldpi/ic_launcher.png
+* app/src/main/res/drawable-mdpi/
+* app/src/main/res/drawable-mdpi/ic_launcher.png
+* app/src/main/res/drawable-xhdpi/
+* app/src/main/res/drawable-xhdpi/ic_launcher.png
+* app/src/main/res/drawable/
+* app/src/main/res/drawable/grey_button_bg.xml
+* app/src/main/res/drawable/sample.jpg
+* app/src/main/res/drawable/sample_text_image.jpg
+* app/src/main/res/drawable/text_sample.png
+* app/src/main/res/drawable/text_sample_highlighted.png
+* app/src/main/res/layout/
+* app/src/main/res/layout/capture.xml
+* app/src/main/res/layout/card.xml
+* app/src/main/res/layout/flash_cards.xml
+* app/src/main/res/layout/main.xml
+* app/src/main/res/layout/results.xml
+* app/src/main/res/layout/welcome.xml
+* app/src/main/res/values/
+* app/src/main/res/values/colors.xml
+* app/src/main/res/values/ids.xml
+* app/src/main/res/values/strings.xml
+* app/src/main/res/values/styles.xml
+* build.gradle
+* build.xml
+* eng.traineddata
+* gradle/
+* gradle/wrapper/
+* gradle/wrapper/gradle-wrapper.jar
+* gradle/wrapper/gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* out/
+* out/production/
+* out/production/clipnotes/
+* out/production/clipnotes/clipnotes.apk
+* out/production/clipnotes/com/
+* out/production/clipnotes/com/clipnotes/
+* out/production/clipnotes/com/clipnotes/BuildConfig.class
+* out/production/clipnotes/com/clipnotes/CameraPreview.class
+* out/production/clipnotes/com/clipnotes/Card$1.class
+* out/production/clipnotes/com/clipnotes/Card.class
+* out/production/clipnotes/com/clipnotes/Mask.class
+* out/production/clipnotes/com/clipnotes/R$attr.class
+* out/production/clipnotes/com/clipnotes/R$color.class
+* out/production/clipnotes/com/clipnotes/R$drawable.class
+* out/production/clipnotes/com/clipnotes/R$id.class
+* out/production/clipnotes/com/clipnotes/R$layout.class
+* out/production/clipnotes/com/clipnotes/R$string.class
+* out/production/clipnotes/com/clipnotes/R$style.class
+* out/production/clipnotes/com/clipnotes/R.class
+* out/production/clipnotes/com/clipnotes/Utils.class
+* out/production/clipnotes/com/clipnotes/activity/
+* out/production/clipnotes/com/clipnotes/activity/Capture$1.class
+* out/production/clipnotes/com/clipnotes/activity/Capture$2.class
+* out/production/clipnotes/com/clipnotes/activity/Capture.class
+* out/production/clipnotes/com/clipnotes/activity/FlashCards$1.class
+* out/production/clipnotes/com/clipnotes/activity/FlashCards$CardData.class
+* out/production/clipnotes/com/clipnotes/activity/FlashCards.class
+* out/production/clipnotes/com/clipnotes/activity/Main$1.class
+* out/production/clipnotes/com/clipnotes/activity/Main$2.class
+* out/production/clipnotes/com/clipnotes/activity/Main.class
+* out/production/clipnotes/com/clipnotes/activity/Results$1.class
+* out/production/clipnotes/com/clipnotes/activity/Results.class
+* proguard-project.txt
+* settings.gradle
+* test_image.JPG
+* test_image2.JPG
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+* sample.JPG => sample.jpg
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
