@@ -1,13 +1,9 @@
-package com.clipnotes;
+package com.clipnotes.utils;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.ExifInterface;
-import android.os.AsyncTask;
 
-import com.clipnotes.activity.Results;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 
@@ -17,7 +13,8 @@ import com.googlecode.tesseract.android.TessBaseAPI;
 public class TessTwoWrapper {
 
     public static final String OCR_RESULTS = "com.clipnotes.OCR_RESULTS";
-    public static final String DATA_PATH = "/tesseract/";
+    public static final String TESSERACT_PATH = "/tesseract/";
+    public static final String TESSERACT_DATA_PATH = TESSERACT_PATH + "/tessdata/";
     private static final String LANG = "eng";
 
     public static void doOcr(final Context context, final Bitmap[] bitmaps)
@@ -29,22 +26,20 @@ public class TessTwoWrapper {
                 String [] results = new String [count];
 
                 TessBaseAPI baseApi = new TessBaseAPI();
-                baseApi.init(context.getFilesDir() + DATA_PATH, LANG);
+                baseApi.init(context.getFilesDir() + TESSERACT_PATH, LANG);
 
                 for(int i = 0; i < count; i++)
                 {
                     baseApi.setImage(bitmaps[i]);
                     results[i] = baseApi.getUTF8Text();
-                    bitmaps[i].recycle();
                 }
 
                 baseApi.end();
 
                 // Post results as an intent
-                Intent intent = new Intent(context, Results.class);
+                Intent intent = new Intent(OCR_RESULTS);
                 intent.putExtra("results", results);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+                context.sendBroadcast(intent);
 
             }
         }).start();

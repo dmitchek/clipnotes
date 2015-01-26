@@ -2,18 +2,25 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@id/text_sample"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/sample_text_image" />
 
     <TextView
         android:id="@id/result_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
-    <com.clipnotes.Mask android:id="@id/mask"
-           android:layout_width="256sp"
-           android:layout_height="72sp"
+    <com.clipnotes.Highlighter android:id="@id/highlighter"
+           android:layout_width="fill_parent"
+           android:layout_height="fill_parent"
            android:background="@android:color/transparent">
-    </com.clipnotes.Mask>
+    </com.clipnotes.Highlighter>
 
     <Button android:id="@id/capture"
             style="@style/grey_button"

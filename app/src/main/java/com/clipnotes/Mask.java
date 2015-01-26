@@ -209,5 +209,4 @@ public class Mask extends RelativeLayout {
     }
 
 
-
 }
