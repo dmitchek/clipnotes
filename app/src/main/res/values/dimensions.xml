@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="OCR_IMAGE_X">1536px</dimen>
+    <dimen name="OCR_IMAGE_Y">2048px</dimen>
+    <dimen name="HIGHLIGHTER_SMALL_SIZE">50px</dimen>
+    <dimen name="HIGHLIGHTER_MEDIUM_SIZE">80px</dimen>
+    <dimen name="HIGHLIGHTER_LARGE_SIZE">150px</dimen>
+</resources>

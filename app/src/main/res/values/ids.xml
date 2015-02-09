@@ -20,4 +20,12 @@
     <item type="id" name="card_nav_buttons" />
     <item type="id" name="card" />
     <item type="id" name="highlighter" />
+    <item type="id" name="capture_preview" />
+
+    <item type="id" name="highlighter_size_small" />
+    <item type="id" name="highlighter_size_medium" />
+    <item type="id" name="highlighter_size_large" />
+
+    <!-- DEBUG -->
+    <item type="id" name="result_preview" />
 </resources>

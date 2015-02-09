@@ -5,12 +5,21 @@ import android.app.ProgressDialog;
 import android.bluetooth.BluetoothClass;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.hardware.Camera;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -55,8 +64,16 @@ public class Capture extends Activity {
     private ProgressDialog mProgressDialog;
 
     private Bitmap mScaledCapture;
-    private ImageView mImageView;
+    private ImageView mCapturePreview;
     private String mCurrentPhotoPath = "";
+    private Button mActionBtn;
+    private boolean mCaptured = false;
+    private float mDensity;
+    private Resources mRes;
+    private Button mSetHighlighterSmall;
+    private Button mSetHighlighterMedium;
+    private Button mSetHighlighterLarge;
+    private View.OnClickListener mSetHighlighterListener;
 
 
     @Override
@@ -67,33 +84,61 @@ public class Capture extends Activity {
 
         mHighlighter = (Highlighter)findViewById(R.id.highlighter);
 
-        //mHighlighter.setBackground(mBackground);
+        mCapturePreview = (ImageView)findViewById(R.id.capture_preview);
 
-        mImageView = (ImageView)findViewById(R.id.text_sample);
+        mActionBtn = (Button)findViewById(R.id.capture);
 
-        //mUpdateHandler = new Handler();
-
-        // Create an instance of Camera
-        // TODO: use this code when we actually want to use a camera
-        /*mCamera = getCameraInstance();
-
-        // Create our Preview view and set it as the content of our activity.
-        mPreview = new CameraPreview(this, mCamera);
-        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
-        preview.addView(mPreview);*/
-
-        Button captureBtn = (Button)findViewById(R.id.capture);
-
-        captureBtn.setOnClickListener(new View.OnClickListener() {
+        mActionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                performOcr();
+
+                if(mCaptured)
+                    performOcr();
+                else
+                    dispatchTakePictureIntent();
+
             }
         });
 
-        storeTrainedDataFile("eng");
+        mSetHighlighterListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = v.getId();
+                int textHeight = 0;
 
-        dispatchTakePictureIntent();
+                switch(id)
+                {
+                    case R.id.highlighter_size_small:
+                        textHeight = (int)mRes.getDimension(R.dimen.HIGHLIGHTER_SMALL_SIZE);
+                        break;
+
+                    case R.id.highlighter_size_medium:
+                        textHeight = (int)mRes.getDimension(R.dimen.HIGHLIGHTER_MEDIUM_SIZE);
+                        break;
+
+                    case R.id.highlighter_size_large:
+                        textHeight = (int)mRes.getDimension(R.dimen.HIGHLIGHTER_LARGE_SIZE);
+                        break;
+                }
+
+                if(textHeight > 0)
+                    mHighlighter.setTextHeight(textHeight);
+            }
+        };
+
+        mSetHighlighterSmall = (Button)findViewById(R.id.highlighter_size_small);
+        mSetHighlighterSmall.setOnClickListener(mSetHighlighterListener);
+
+        mSetHighlighterMedium = (Button)findViewById(R.id.highlighter_size_medium);
+        mSetHighlighterMedium.setOnClickListener(mSetHighlighterListener);
+
+        mSetHighlighterLarge = (Button)findViewById(R.id.highlighter_size_large);
+        mSetHighlighterLarge.setOnClickListener(mSetHighlighterListener);
+
+        mDensity = getApplicationContext().getResources().getDisplayMetrics().density;
+        mRes = getResources();
+
+        storeTrainedDataFile("eng");
     }
 
     @Override
@@ -101,7 +146,8 @@ public class Capture extends Activity {
     {
         super.onDestroy();
 
-        unregisterReceiver(mOCRREsultsReceiver);
+        if(mOCRREsultsReceiver != null)
+            unregisterReceiver(mOCRREsultsReceiver);
     }
 
     @Override
@@ -113,16 +159,80 @@ public class Capture extends Activity {
 
             if(mCurrentPhotoPath.length() > 0) {
 
-                Display display = getWindowManager().getDefaultDisplay();
-                Point size = new Point();
-                display.getSize(size);
+                //Display display = getWindowManager().getDefaultDisplay();
+                //Point size = new Point();
+                //display.getSize(size);
 
-                mScaledCapture = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath),
-                        size.x, size.y, false);
+                try {
+                    mScaledCapture = loadScaledImage();
 
-                mImageView.setImageBitmap(mScaledCapture);
+                    if(mScaledCapture != null)
+                        mCapturePreview.setImageBitmap(mScaledCapture);
+
+                    mCaptured = true;
+                    mActionBtn.setText("Get Text");
+
+                } catch (IOException e)
+                {
+                    Log.d(TAG, "Failed to load image");
+                }
             }
         }
+    }
+
+    private Bitmap loadScaledImage() throws IOException
+    {
+
+        Bitmap scaledBitmap = null;
+
+        ExifInterface exif = new ExifInterface(mCurrentPhotoPath);
+
+        int exifOrientation = exif.getAttributeInt(
+                ExifInterface.TAG_ORIENTATION,
+                ExifInterface.ORIENTATION_NORMAL);
+
+        int rotate = 0;
+
+        switch (exifOrientation) {
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                rotate = 90;
+                break;
+
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                rotate = 180;
+                break;
+
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                rotate = 270;
+                break;
+        }
+
+        Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath);
+
+        int w = bitmap.getWidth();
+        int h = bitmap.getHeight();
+
+        // Setting pre rotate
+        Matrix mtx = new Matrix();
+        mtx.preRotate(rotate);
+
+        Bitmap tmpBitmap = Bitmap.createBitmap(bitmap, 0, 0, w, h, mtx, false);
+        tmpBitmap = tmpBitmap.copy(Bitmap.Config.ARGB_8888, true);
+
+        Resources res = getResources();
+
+        int scaleX = Math.round(mRes.getDimension(R.dimen.OCR_IMAGE_X));
+        int scaleY = Math.round(mRes.getDimension(R.dimen.OCR_IMAGE_Y));
+
+        scaledBitmap = Bitmap.createScaledBitmap(tmpBitmap,
+                                                 scaleX,
+                                                 scaleY,
+                                                 false);
+
+        tmpBitmap.recycle();
+        System.gc();
+
+        return scaledBitmap;
     }
 
     private File createImageFile() throws IOException {
@@ -146,6 +256,7 @@ public class Capture extends Activity {
 
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
 
+            mCaptured = false;
             // Create the File where the photo should go
             File photoFile = null;
             try {
@@ -161,6 +272,8 @@ public class Capture extends Activity {
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
         }
+
+
     }
 
     private void performOcr(){
@@ -169,10 +282,7 @@ public class Capture extends Activity {
 
         Bitmap[] bitmaps;
 
-        mImageView.setVisibility(View.GONE);
-
-        //mBackground = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.sample_text_image),
-        //        mImageView.getWidth(), mImageView.getHeight(), false);
+        mCapturePreview.setVisibility(View.GONE);
 
         Vector<Highlighter.Line> lines = mHighlighter.getLines();
         bitmaps = new Bitmap[lines.size()];
@@ -182,9 +292,8 @@ public class Capture extends Activity {
         int index = 0;
         while(iter.hasNext())
         {
-            Highlighter.Line line = iter.next();
-            bitmaps[index] = cropImageForProcessing(mScaledCapture, line.x, line.y,
-                                                            line.length, line.height);
+            Highlighter.Line r = iter.next();
+            bitmaps[index] = cropImageForProcessing(mScaledCapture, r.rect);
             index++;
         }
 
@@ -196,10 +305,76 @@ public class Capture extends Activity {
         System.gc();
     }
 
-    private Bitmap cropImageForProcessing(final Bitmap orgBitmap, int startX, int startY,
-                                                                  int width,  int height)
+    private int getTranslatedX(int x)
     {
-        return Bitmap.createBitmap(orgBitmap, startX, startY, width, height);
+        return translateCord(0, x);
+    }
+
+    private int getTranslatedY(int y)
+    {
+        return translateCord(1, y);
+    }
+
+    private int translateCord(int axis, int value)
+    {
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        if(axis == 0)
+            return Math.round(value * (mRes.getDimension(R.dimen.OCR_IMAGE_X) / size.x));
+        else
+            return Math.round(value * (mRes.getDimension(R.dimen.OCR_IMAGE_Y) / size.y));
+    }
+
+    private Bitmap cropImageForProcessing(final Bitmap orgBitmap, Rect rect)
+    {
+        //Display display = getWindowManager().getDefaultDisplay();
+        //Point size = new Point();
+        //display.getSize(size);
+
+         //float sx = size.x / mRes.getDimension(R.dimen.OCR_IMAGE_X);
+        //float sy = size.y / mRes.getDimension(R.dimen.OCR_IMAGE_Y);
+        //float s1 = sx > sy ? sx : sy;
+
+        //int dy = line.endY - line.startY;
+        //double deg = Math.atan2(Math.abs(dx), Math.abs(dy))*(180.0/Math.PI);
+
+        //Matrix mtx = new Matrix();
+        //mtx.postRotate(360.0F - (float)deg, mRes.getDimension(R.dimen.OCR_IMAGE_X)/2,
+        //                           mRes.getDimension(R.dimen.OCR_IMAGE_Y)/2);
+
+        //mtx.postScale(sx, sy);
+
+        /*Bitmap tempBitmap = Bitmap.createBitmap(orgBitmap,
+                                                0,
+                                                0,
+                                                (int)mRes.getDimension(R.dimen.OCR_IMAGE_X),
+                                                (int)mRes.getDimension(R.dimen.OCR_IMAGE_Y),
+                                                mtx,
+                                                false);
+
+        /*Canvas canvas = new Canvas(tempBitmap);
+
+        Paint pathPaint = new Paint();
+        pathPaint.setColor(Color.rgb(255, 255, 0));
+        pathPaint.setStrokeWidth(line.height);
+        pathPaint.setAlpha(70);
+        pathPaint.setStyle(Paint.Style.STROKE);
+        Path path = new Path();
+
+        path.moveTo(getTranslatedX(line.startX), getTranslatedY(line.startY));
+        path.lineTo(getTranslatedX(line.endX), getTranslatedY(line.startY));
+        canvas.drawPath(path, pathPaint);*/
+
+        int width = Math.abs(rect.right - rect.left);
+        int height = Math.abs(rect.bottom - rect.top);
+
+        return Bitmap.createBitmap(orgBitmap,
+                getTranslatedX(rect.left),
+                getTranslatedY(rect.top),
+                getTranslatedX(width),
+                getTranslatedX(height));
     }
 
     private boolean storeTrainedDataFile(String lang)

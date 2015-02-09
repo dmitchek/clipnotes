@@ -5,11 +5,9 @@
                 android:layout_height="match_parent" >
 
     <ImageView
-        android:id="@id/text_sample"
+        android:id="@id/capture_preview"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/sample_text_image" />
+        android:layout_height="fill_parent" />
 
     <TextView
         android:id="@id/result_text"
@@ -26,6 +24,36 @@
             style="@style/grey_button"
             android:text="capture"
             android:layout_alignParentBottom="true"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMALL"
+        android:id="@id/highlighter_size_small"
+        android:layout_above="@id/capture"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10sp"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MEDIUM"
+        android:layout_above="@id/capture"
+        android:id="@id/highlighter_size_medium"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10sp"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LARGE"
+        android:id="@id/highlighter_size_large"
+        android:layout_above="@id/capture"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10sp" />
 
 
 </RelativeLayout>
