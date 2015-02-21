@@ -11,56 +11,29 @@ import android.widget.TextView;
 import com.clipnotes.BuildConfig;
 import com.clipnotes.R;
 import com.clipnotes.Card;
+import com.clipnotes.flashcard.FlashCardsUtil;
+
+import java.util.ArrayList;
 
 /**
  * Created by dmitchell on 12/14/14.
  */
-public class FlashCards extends Activity {
+public class FlashCardActivity extends Activity {
 
-    private class CardData
-    {
-        String mFront;
-        String mBack;
-
-        public CardData(String front, String back)
-        {
-            mFront = front;
-            mBack = back;
-        }
-
-        public String getBack() {
-            return mBack;
-        }
-
-        public String getFront() {
-            return mFront;
-        }
-
-        public void setFront(String front)
-        {
-            mFront = front;
-        }
-
-        public void setBack(String back)
-        {
-            mBack = back;
-        }
-    }
-
-    private CardData [] mCards = new CardData[4];
     private int mCurCard = 0;
     TextView mCardText;
     TextView mCardNum;
     TextView mCardTitle;
+    private FlashCardsUtil mCardUtil;
 
     private Card mCardObject;
 
-    public FlashCards()
+    public FlashCardActivity()
     {
-        mCards[0] = new CardData("This is the front of 1", "This is the back of 1");
+        /*mCards[0] = new CardData("This is the front of 1", "This is the back of 1");
         mCards[1] = new CardData("This is the front of 2", "This is the back of 2");
         mCards[2] = new CardData("This is the front of 3", "This is the back of 3");
-        mCards[3] = new CardData("This is the front of 4", "This is the back of 4");
+        mCards[3] = new CardData("This is the front of 4", "This is the back of 4");*/
 
     }
 
@@ -91,12 +64,15 @@ public class FlashCards extends Activity {
         mCardTitle = (TextView)findViewById(R.id.card_title);
         mCardNum = (TextView)findViewById(R.id.card_num);
 
-        loadCard(0);
+        mCardUtil = new FlashCardsUtil(getBaseContext());
+        mCardUtil.createCard("test front", "text back", 0, 1, null, null);
+
+        ArrayList<FlashCardsUtil.CardData> cards = mCardUtil.getCardsByCategory(0);
     }
 
     private void loadCard(int cardIndex)
     {
-        if(cardIndex >= 0 && cardIndex < mCards.length)
+        /*if(cardIndex >= 0 && cardIndex < mCards.length)
         {
             Bundle bundle = new Bundle();
 
@@ -118,7 +94,7 @@ public class FlashCards extends Activity {
             mCardNum.setText(cardNum);
 
             mCurCard = cardIndex;
-        }
+        }*/
     }
 
 

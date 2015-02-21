@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.clipnotes.activity.FlashCards"
+        <activity android:name="com.clipnotes.activity.FlashCardActivity"
                   android:label="flash cards">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

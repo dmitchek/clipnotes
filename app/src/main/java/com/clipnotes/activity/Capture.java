@@ -97,6 +97,9 @@ public class Capture extends Activity {
                 else
                     dispatchTakePictureIntent();
 
+                //Intent intent = new Intent(getApplicationContext(), Results.class);
+                //startActivity(intent);
+
             }
         });
 

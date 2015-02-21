@@ -26,7 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-public class Main extends Activity {
+public class Welcome extends Activity {
 
     private View.OnClickListener _doOcrClick;
     private String _path = "";
@@ -55,7 +55,7 @@ public class Main extends Activity {
         flashCards.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), FlashCards.class));
+                startActivity(new Intent(getApplicationContext(), FlashCardActivity.class));
             }
         });
 
