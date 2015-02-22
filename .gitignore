@@ -9,4 +9,3 @@ app/out/
 out/
 gen/
 app/src/main/jniLibs/
-libraries/opencv/
