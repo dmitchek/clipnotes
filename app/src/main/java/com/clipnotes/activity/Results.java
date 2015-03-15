@@ -60,7 +60,6 @@ public class Results extends Activity {
     public void onResume() {
         super.onResume();
 
-
         mResultsView = (LinearLayout) findViewById(R.id.results);
         for (int i = 0; i < mResults.length; i++) {
             EditText result = (EditText) LayoutInflater.from(getApplicationContext())

@@ -28,6 +28,13 @@
     <Button android:id="@id/flash_cards"
             style="@style/grey_button"
             android:text="my flash cards"
-            android:layout_alignParentBottom="true"
+            android:layout_above="@id/card_creator"
              />
+
+    <Button android:id="@id/card_creator"
+        style="@style/grey_button"
+        android:text="card creator"
+        android:layout_alignParentBottom="true"
+        />
+
 </RelativeLayout>

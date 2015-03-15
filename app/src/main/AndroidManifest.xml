@@ -5,7 +5,7 @@
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="21"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:largeHeap="true">
-        <activity android:name="com.clipnotes.activity.Main"
+        <activity android:name="com.clipnotes.activity.Welcome"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -32,6 +32,14 @@
 
         <activity android:name="com.clipnotes.activity.FlashCardActivity"
                   android:label="flash cards">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".flashcard.activity.CardCreator"
+            android:label="card creator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.DEFAULT"/>

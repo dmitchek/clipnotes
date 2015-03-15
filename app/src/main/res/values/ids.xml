@@ -26,6 +26,20 @@
     <item type="id" name="highlighter_size_medium" />
     <item type="id" name="highlighter_size_large" />
 
+    <!-- Card creator IDs -->
+    <item type="id" name="cards_list" />
+    <item type="id" name="subjects_spinner" />
+    <item type="id" name="colors_spinner" />
+    <item type="id" name="create_button" />
+    <item type="id" name="create_new_card" />
+    <item type="id" name="card_creator" />
+    <item type="id" name="creator_side_text" />
+    <item type="id" name="creator_text" />
+    <item type="id" name="creator_new" />
+    <item type="id" name="creator_choose_file" />
+    <item type="id" name="creator_choose_existing" />
+
+
     <!-- DEBUG -->
     <item type="id" name="result_preview" />
 </resources>

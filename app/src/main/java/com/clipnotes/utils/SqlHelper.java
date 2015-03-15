@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteQuery;
 import android.util.Log;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -28,6 +29,14 @@ public class SqlHelper {
     public SqlHelper(Context context, String name)
     {
         File mDatabaseFile = context.getDatabasePath(name);
+
+        String dbPath = context.getDatabasePath(name).getPath();
+        dbPath = dbPath.substring(0, dbPath.lastIndexOf(name));
+        File mDatabasePath = new File(dbPath);
+
+        if(!mDatabasePath.exists())
+            mDatabasePath.mkdirs();
+
         mDatabaseName = name;
 
         SQLiteDatabase.CursorFactory cursorFactory = new SQLiteDatabase.CursorFactory() {

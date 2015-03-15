@@ -20,7 +20,7 @@ public class TessTwoWrapper {
     public static final String DATA_PATH = "/tesseract/";
     private static final String LANG = "eng";
 
-    public static void doOcr(final Context context, final Bitmap[] bitmaps)
+    public static void doOcr(final Context context, final Bitmap[] bitmaps, final Intent intent)
     {
         new Thread(new Runnable() {
             @Override
@@ -41,7 +41,6 @@ public class TessTwoWrapper {
                 baseApi.end();
 
                 // Post results as an intent
-                Intent intent = new Intent(context, Results.class);
                 intent.putExtra("results", results);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

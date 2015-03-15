@@ -74,6 +74,7 @@ public class Capture extends Activity {
     private Button mSetHighlighterMedium;
     private Button mSetHighlighterLarge;
     private View.OnClickListener mSetHighlighterListener;
+    private Intent mResultIntent = null;
 
 
     @Override
@@ -304,7 +305,7 @@ public class Capture extends Activity {
 
         mScaledCapture.recycle();
 
-        TessTwoWrapper.doOcr(getApplicationContext(), bitmaps);
+        TessTwoWrapper.doOcr(getApplicationContext(), bitmaps, mResultIntent);
         System.gc();
     }
 

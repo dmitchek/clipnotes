@@ -1,4 +1,4 @@
-package com.clipnotes;
+package com.clipnotes.flashcard.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clipnotes.R;
+
 /**
  * Created by dmitchell on 12/14/14.
  */
-public class Card extends Fragment {
+public class CardFragment extends Fragment {
 
     private String mFront;
     private String mBack;

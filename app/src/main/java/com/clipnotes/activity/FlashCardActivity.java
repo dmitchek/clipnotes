@@ -3,15 +3,14 @@ package com.clipnotes.activity;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.clipnotes.BuildConfig;
 import com.clipnotes.R;
-import com.clipnotes.Card;
+import com.clipnotes.flashcard.data.Card;
 import com.clipnotes.flashcard.FlashCardsUtil;
+import com.clipnotes.flashcard.data.Stack;
+import com.clipnotes.flashcard.fragment.CardFragment;
 
 import java.util.ArrayList;
 
@@ -26,16 +25,7 @@ public class FlashCardActivity extends Activity {
     TextView mCardTitle;
     private FlashCardsUtil mCardUtil;
 
-    private Card mCardObject;
-
-    public FlashCardActivity()
-    {
-        /*mCards[0] = new CardData("This is the front of 1", "This is the back of 1");
-        mCards[1] = new CardData("This is the front of 2", "This is the back of 2");
-        mCards[2] = new CardData("This is the front of 3", "This is the back of 3");
-        mCards[3] = new CardData("This is the front of 4", "This is the back of 4");*/
-
-    }
+    private Card mCard;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -47,7 +37,7 @@ public class FlashCardActivity extends Activity {
         Button mPrev = (Button)findViewById(R.id.prev_card);
         Button mNext = (Button)findViewById(R.id.next_card);
 
-        View.OnClickListener navButtonListener = new View.OnClickListener() {
+        /*View.OnClickListener navButtonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(v.getId() == R.id.prev_card)
@@ -55,31 +45,40 @@ public class FlashCardActivity extends Activity {
                 else if(v.getId() == R.id.next_card)
                     loadCard(mCurCard+1);
             }
-        };
+        };*/
 
-        mPrev.setOnClickListener(navButtonListener);
-        mNext.setOnClickListener(navButtonListener);
+        //mPrev.setOnClickListener(navButtonListener);
+        //mNext.setOnClickListener(navButtonListener);
 
         mCardText = (TextView)findViewById(R.id.card_text);
         mCardTitle = (TextView)findViewById(R.id.card_title);
         mCardNum = (TextView)findViewById(R.id.card_num);
 
-        mCardUtil = new FlashCardsUtil(getBaseContext());
-        mCardUtil.createCard("test front", "text back", 0, 1, null, null);
+        mCard = Card.createCard("test front", "text back", null, null, "", "");
 
-        ArrayList<FlashCardsUtil.CardData> cards = mCardUtil.getCardsByCategory(0);
+        Card.insertCard(getApplicationContext(), mCard);
+
+        Card cardFromDB = Card.getCardByUUID(getApplicationContext(), mCard.getUUID());
+
+        //ArrayList<FlashCardsUtil.CardData> cards = mCardUtil.getCardsByCategory(0);
+        loadCard(cardFromDB);
+
+        Stack stack = Stack.createStack("The Title of My Stack", "1234", "");
+
+        Stack.insertStack(getApplicationContext(), stack);
+
+        Stack stackFromDB = Stack.getStackByUUID(getApplicationContext(), stack.getUUID());
     }
 
-    private void loadCard(int cardIndex)
+    private void loadCard(Card card)
     {
-        /*if(cardIndex >= 0 && cardIndex < mCards.length)
-        {
+
             Bundle bundle = new Bundle();
 
-            bundle.putString("front", mCards[cardIndex].getFront());
-            bundle.putString("back", mCards[cardIndex].getBack());
+            bundle.putString("front", card.getFront());
+            bundle.putString("back", card.getBack());
 
-            Fragment newCard = new Card();
+            Fragment newCard = new CardFragment();
             newCard.setArguments(bundle);
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
@@ -88,14 +87,12 @@ public class FlashCardActivity extends Activity {
 
             transaction.commit();
 
-            String cardNum = Integer.toString(cardIndex+1);
+            /*String cardNum = Integer.toString(cardIndex+1);
             cardNum += " / ";
             cardNum += Integer.toString(mCards.length);
             mCardNum.setText(cardNum);
 
-            mCurCard = cardIndex;
-        }*/
+            mCurCard = cardIndex;*/
+
     }
-
-
 }
